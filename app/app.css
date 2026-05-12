@@ -1,0 +1,298 @@
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-badge-green: #dcfce7;
+  --color-badge-red: #fee2e2;
+  --color-badge-yellow: #fef3c7;
+  --color-badge-green-text: #166534;
+  --color-badge-red-text: #991b1b;
+  --color-badge-yellow-text: #92400e;
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply m-0 bg-slate-50 text-slate-950 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-50;
+}
+
+main {
+  @apply min-h-screen;
+}
+
+h1 {
+  @apply text-5xl font-black leading-tight text-slate-950 dark:text-white max-md:text-4xl;
+}
+
+h2 {
+  @apply text-2xl leading-snug text-slate-600 dark:text-slate-300 max-md:text-xl;
+}
+
+label {
+  @apply text-sm font-semibold text-slate-700 dark:text-slate-200;
+}
+
+input,
+textarea {
+  @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/15 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100;
+}
+
+form {
+  @apply flex w-full flex-col items-start gap-5;
+}
+
+@layer components {
+  .app-shell {
+    @apply bg-[radial-gradient(circle_at_top_left,#e0f2fe,transparent_34%),linear-gradient(135deg,#f8fafc,#eef2ff_52%,#ecfeff)] px-5 py-6 transition-colors duration-300 dark:bg-[radial-gradient(circle_at_top_left,#0e7490,transparent_28%),linear-gradient(135deg,#020617,#111827_55%,#0f172a)];
+  }
+
+  .navbar {
+    @apply mx-auto flex w-full max-w-7xl items-center justify-between rounded-2xl border border-white/70 bg-white/85 px-5 py-4 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/85;
+  }
+
+  .brand-mark {
+    @apply text-2xl font-black tracking-tight text-slate-950 dark:text-white;
+  }
+
+  .primary-button {
+    @apply rounded-xl bg-cyan-600 px-5 py-3 text-center font-bold text-white shadow-lg shadow-cyan-600/20 transition hover:-translate-y-0.5 hover:bg-cyan-500 focus:outline-none focus:ring-4 focus:ring-cyan-400/30;
+  }
+
+  .icon-button {
+    @apply grid size-11 place-items-center rounded-xl border border-slate-200 bg-white text-sm font-black text-slate-700 transition hover:border-cyan-400 hover:text-cyan-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200;
+  }
+
+  .main-section {
+    @apply mx-auto flex w-full max-w-7xl flex-col items-center gap-8 py-10;
+  }
+
+  .page-heading {
+    @apply flex flex-col items-center gap-5 text-center;
+  }
+
+  .hero-panel {
+    @apply w-full rounded-3xl border border-white/70 bg-white/80 px-8 py-14 shadow-xl shadow-slate-200/60 backdrop-blur dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-black/20 max-sm:px-5;
+  }
+
+  .eyebrow {
+    @apply text-sm font-black uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-300;
+  }
+
+  .hero-actions {
+    @apply flex flex-wrap items-center justify-center gap-4 pt-2;
+  }
+
+  .hero-stat,
+  .muted-text {
+    @apply text-slate-500 dark:text-slate-400;
+  }
+
+  .resumes-section {
+    @apply grid w-full grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3;
+  }
+
+  .resume-card,
+  .analysis-card,
+  .form-card,
+  .processing-card,
+  .insight-panel {
+    @apply rounded-2xl border border-white/70 bg-white/90 shadow-lg shadow-slate-200/60 transition duration-300 dark:border-slate-800 dark:bg-slate-900/90 dark:shadow-black/20;
+  }
+
+  .resume-card {
+    @apply flex h-full flex-col gap-5 p-5 hover:-translate-y-1 hover:border-cyan-300;
+  }
+
+  .resume-card-header {
+    @apply flex min-h-24 items-center justify-between gap-4;
+  }
+
+  .card-title {
+    @apply break-words text-2xl font-black text-slate-950 dark:text-white;
+  }
+
+  .preview-frame {
+    @apply rounded-xl border border-slate-200 bg-slate-100 p-2 dark:border-slate-700 dark:bg-slate-950;
+  }
+
+  .upload-layout {
+    @apply grid w-full grid-cols-[0.85fr_1.15fr] items-start gap-8 max-lg:grid-cols-1;
+  }
+
+  .upload-copy {
+    @apply sticky top-8 flex flex-col gap-5 rounded-3xl px-2 py-6 max-lg:static;
+  }
+
+  .form-card,
+  .processing-card {
+    @apply p-6;
+  }
+
+  .processing-card {
+    @apply flex min-h-96 flex-col items-center justify-center gap-5 text-center;
+  }
+
+  .loader-ring {
+    @apply size-20 rounded-full border-8 border-slate-200 border-t-cyan-500 animate-spin dark:border-slate-800 dark:border-t-cyan-300;
+  }
+
+  .form-div {
+    @apply flex w-full flex-col items-start gap-2;
+  }
+
+  .upload-shell {
+    @apply w-full rounded-2xl border border-dashed border-cyan-300 bg-cyan-50/70 p-2 transition duration-300 dark:border-cyan-800 dark:bg-cyan-950/30;
+  }
+
+  .upload-shell.is-dragging {
+    @apply scale-[1.01] border-cyan-500 bg-cyan-100 shadow-xl shadow-cyan-500/20 dark:bg-cyan-900/40;
+  }
+
+  .uplader-drag-area {
+    @apply relative min-h-52 cursor-pointer rounded-xl bg-white p-8 text-center transition-all duration-500 dark:bg-slate-900;
+  }
+
+  .upload-orb {
+    @apply grid size-16 place-items-center rounded-2xl bg-cyan-600 text-3xl font-black text-white shadow-lg shadow-cyan-500/25 transition;
+  }
+
+  .upload-shell.is-dragging .upload-orb {
+    @apply -translate-y-1 scale-110;
+  }
+
+  .uploader-selected-file {
+    @apply flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950;
+  }
+
+  .file-icon,
+  .metric-icon {
+    @apply grid size-12 shrink-0 place-items-center rounded-xl bg-slate-950 text-xs font-black text-white dark:bg-cyan-500 dark:text-slate-950;
+  }
+
+  .resume-nav {
+    @apply mx-auto flex w-full max-w-7xl items-center justify-between py-5;
+  }
+
+  .back-button {
+    @apply inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm transition hover:border-cyan-400 hover:text-cyan-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200;
+  }
+
+  .review-layout {
+    @apply mx-auto grid w-full max-w-7xl grid-cols-[0.9fr_1.1fr] gap-8 max-lg:grid-cols-1;
+  }
+
+  .preview-section {
+    @apply sticky top-6 flex h-[calc(100vh-3rem)] items-start justify-center max-lg:static max-lg:h-auto;
+  }
+
+  .resume-preview {
+    @apply h-full w-full rounded-2xl border border-white/70 bg-white/80 p-3 shadow-xl shadow-slate-200/60 dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-black/30 max-lg:h-[70vh] max-sm:h-[55vh];
+  }
+
+  .feedback-section {
+    @apply flex w-full flex-col gap-6 pb-8;
+  }
+
+  .section-title {
+    @apply text-4xl font-black text-slate-950 dark:text-white;
+  }
+
+  .resume-summary {
+    @apply px-4 pb-3;
+  }
+
+  .resume-summary .category {
+    @apply flex w-full items-center justify-between gap-4 rounded-xl bg-slate-50 p-4 dark:bg-slate-950 max-sm:flex-col max-sm:items-start;
+  }
+
+  .score-badge {
+    @apply flex flex-row items-center justify-center gap-4 rounded-full px-2 py-1;
+  }
+
+  .ats-card {
+    @apply p-6;
+  }
+
+  .status-dot {
+    @apply mt-2 size-2.5 shrink-0 rounded-full;
+  }
+
+  .status-dot.good {
+    @apply bg-green-500;
+  }
+
+  .status-dot.improve {
+    @apply bg-amber-500;
+  }
+
+  .insight-grid {
+    @apply grid grid-cols-2 gap-5 max-xl:grid-cols-1;
+  }
+
+  .insight-panel {
+    @apply p-5;
+  }
+
+  .insight-panel h3 {
+    @apply mb-4 text-xl font-black text-slate-950 dark:text-white;
+  }
+
+  .keyword-cloud {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .keyword-pill {
+    @apply rounded-full px-3 py-1 text-sm font-bold;
+  }
+
+  .keyword-pill.matched {
+    @apply bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300;
+  }
+
+  .keyword-pill.missing {
+    @apply bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300;
+  }
+
+  .skill-columns {
+    @apply grid grid-cols-2 gap-4 max-sm:grid-cols-1;
+  }
+
+  .mini-label {
+    @apply mb-2 text-xs font-black uppercase tracking-[0.16em] text-slate-400;
+  }
+
+  .skill-columns ul,
+  .numbered-list,
+  .tip-list {
+    @apply flex flex-col gap-2 text-sm text-slate-600 dark:text-slate-300;
+  }
+
+  .skill-columns li,
+  .numbered-list li,
+  .tip-list li {
+    @apply rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-950;
+  }
+
+  .site-footer {
+    @apply mx-auto mt-8 w-full max-w-7xl border-t border-slate-200 py-6 text-center text-sm font-semibold text-slate-500 dark:border-slate-800 dark:text-slate-400;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
